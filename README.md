@@ -1,34 +1,54 @@
-# Documentation
-docs
->>># MULTIPASS DOCUMENTATION
-Multipass is a tool to generate cloud-style Ubuntu VMs quickly on Linux, macOS and Windows. It provides a simple but powerful CLI that enables you to quickly access an Ubuntu command line or create your own local mini-cloud.
->>## In This Docummmention
-- You will learn how to install and use multipass     
-- You learn how to create an instance
-- you will learn how to stop, purge, and delete instances runing on a virtual machine
->>### Install
-- Run command `` snap install multipass ``
->>#### Use
-- Run command `` multipass launch``
-- Run the command `` multipass find `` to know the images availble
->>#### Creating an instance
-- use ``multipass launch 22.04 --name docker-vm `` to create a new multipass instance based on the **Ubuntu 22.04**
-image, and it assigns the name **docker-vm** to that instance. 
-- use ``multipass shell docker-vm `` to manage and interact with your multipass instance directly from your terminal
+># MULTIPASS REVIEW
+Multipass is a flexible and powerful tool that can be used for many purposes.
+In its simplest form, you can use it to quickly create and destroy Ubuntu VMs (instances) on any host machine.
+ But you can also use Multipass to build a local mini-cloud on your laptop, to test and develop multi-instance
+ or container-based cloud applications.Here we're going to be seeing some basic commnads and how they would
+ help you manipulate your Virtual machine.
 
->>#### Starting an instance
-- use ``multipass start docker-vm`` to start the specific instance that has been previously created 
->>#### Stop an instance
-- use ``multipass stop docker-vm`` to stop the specific instance 
->>#### Deleting an instance
-- use `` multipass delete docker-vm `` to delete an instance
->>#### Purging an instance
-- use `` multipass purge `` to delete all instances that have been marked for deletion
->>#### Aliasing 
-This is used to create a shorter and easy to remember name of the instance. It is done by adding the  alias to the ``nano ~/.zshrc`` configuration file
+ >>## Installing multipass  
+ You could start by installing the multipass using the commands;
+ _>snap install multipass
+ Subsequently if you no longer find interest in this tool you could simply ninstall it using the command ;
+ >``snap remove multipass``
 
-- use ``multipass alias <alias-name> <instance-name>``
-  in this case ``multipass alias one docker-vm`` the new alias name is ***one***
+ >><h2> Instances  
+ An instance in the context of virtual machines (VMs) refers to an individual, isolated virtual machine that is
+ created and run within a virtualization platform or cloud environment. It is essentially a "copy" or "deployment"
+  of a virtual machine template or image, running its own operating system and functioning as a separate, independent
+  computing environment.This instances could be created using the following commands
+  >``multipass launch``
+
+  But to create an instance with a specific image use the command``multipass launch jammy`` that is after running **``multipass find``** to check which images are available
+  An existing instance that is in Stopped or Suspended status can be started with the multipass start command;
+  - __TO start__ : use **``multipass start loving-duck``** given that loving-duck is the existing instance
+  - __TO stop__  : use **``multipass stop loving-duck``** given that loving-duck is the existing instance
+  - __TO suspend__ : use **``multipass suspend loving-duck``** given that loving-duck is the existing instance
+  >><h2>Deleting instances
+  To mark an instance as deleted, run:
+**``multipass delete keen-yak``**
+You can also use the --purge option to permanently delete an instance in a single command; for example:
+**``multipass delete --purge keen-yak``**  
+
+>><h2>How to use the Docker blueprint  
+The Docker blueprint gives Multipass users an easy way to create Ubuntu instances with Docker installed. It is based on the latest LTS release of Ubuntu, and includes docker engine and Portainer  
+To use the Docker blueprint, run **``multipass launch docker --name docker-vm``**, which will launch the docker-vm instance with default parameters.  
+
+>><h2>Using the Alias   
+The alias command in Unix-like operating systems (such as Linux and macOS) is used to create shortcuts for frequently used commands. It allows you to define a custom alias or shorthand for a longer or more complex command, making it quicker and easier to execute. You'll need to add this to your shell configuration (.bashrc, .zshrc or so) for aliases to work without working with extra long commands
+
+
+
+#### For more details om multipass, Follow the links bellow
+
+- ##### [Tutorial](https://multipass.run/docs/tutorial)
+
+- ##### [How-to guides](https://multipass.run/docs/how-to-guides)
+
+- ##### [Reference](https://multipass.run/docs/reference)
+
+- ##### [Explanation](https://multipass.run/docs/explanation)
+
+
 
 
 **_All these commands done on the comand line can be done_**  
